@@ -275,7 +275,7 @@ int execute_command(char *command)
 	}
 	if (infile != NULL) {
 		SO_FILE *f = so_fopen(infile, "w");
-		
+
 		dup2(f->fd, STDIN_FILENO);
 	}
 	int ret = execvp(args[0], (char *const *)args);
