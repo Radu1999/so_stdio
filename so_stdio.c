@@ -186,9 +186,8 @@ int so_fseek(SO_FILE *stream, long offset, int whence)
 	if (stream->last_op == WRITE) {
 		int r = so_fflush(stream);
 
-		if (r < 0) {
+		if (r < 0)
 			return -1;
-		}
 	}
 	if (stream->last_op == READ) {
 		stream->read_cursor = 0;
@@ -271,10 +270,12 @@ int execute_command(char *command)
 	args[args_len++] = NULL;
 	if (outfile != NULL) {
 		SO_FILE *f = so_fopen(outfile, "w");
+
 		dup2(f->fd, STDOUT_FILENO);
 	}
 	if (infile != NULL) {
 		SO_FILE *f = so_fopen(infile, "w");
+		
 		dup2(f->fd, STDIN_FILENO);
 	}
 	int ret = execvp(args[0], (char *const *)args);
