@@ -22,9 +22,9 @@ struct _so_file {
 SO_FILE *so_fopen(const char *pathname, const char *mode)
 {
 	SO_FILE *file = malloc(sizeof(SO_FILE));
-	if (file == NULL) {
+
+	if (file == NULL)
 		return NULL;
-	}
 
 	file->write_cursor = 0;
 	file->read_cursor = 0;
@@ -33,6 +33,7 @@ SO_FILE *so_fopen(const char *pathname, const char *mode)
 	file->has_error = 0;
 
 	int open_mode = 0;
+
 	if (!strcmp(mode, "r")) {
 		open_mode = O_RDONLY;
 	} else if (!strcmp(mode, "r+")) {
@@ -231,6 +232,7 @@ int so_ferror(SO_FILE *stream)
 long so_ftell(SO_FILE *stream)
 {
 	int r = lseek(stream->fd, 0, SEEK_CUR);
+
 	if (r < 0) {
 		stream->has_error = 1;
 		return -1;
