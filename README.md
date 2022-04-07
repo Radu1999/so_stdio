@@ -3,7 +3,6 @@ Grupă: 335 CA
 
 # Tema 2
 
-# Este recomandat să folosiți diacritice
 
 ## Organizare
 
